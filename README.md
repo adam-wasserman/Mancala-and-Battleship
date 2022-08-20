@@ -1,7 +1,7 @@
 # Mancala-and-Battleship
 Play Mancala and Battleship!
 
-![Using the Mancala-solver to beat my sister](https://github.com/adam-wasserman/Mancala-and-Battleship/blob/main/beatsister.png)
+![Using the Mancala-solver to beat my sister](https://github.com/adam-wasserman/Mancala-and-Battleship/blob/main/beatSister.png)
 
 ### Mancala solver
 The Mancala game implements a postorder traversal algorithm to calculate the best sequence of moves.

@@ -65,7 +65,7 @@ class Board:
         row = self.player
         for col in range(6):#6 is the number of columns
             path = [col]
-            next_move = Board(copy.copy(self.board),player = self.player)
+            next_move = Board(copy.copy(self.board),bucket = np.zeros(2,dtype = 'int8'),player = self.player)
             again,gained = next_move.move((row,col))
             if again:
                 add_path, add_gain = next_move.simulate() # recursive call
@@ -75,6 +75,11 @@ class Board:
             res.append([path,gained])
         
         return max(res, key = lambda x: x[1])
+
+    def printBoard(self):
+        print("Board representation: ")
+        print(" ".join([str(num) for num in self.board[0]]))
+        print(" ".join([str(num) for num in self.board[1]]))
     
 
 if __name__ == '__main__':
@@ -83,12 +88,16 @@ if __name__ == '__main__':
     while sum(game.board[0,:]) != 0 and sum(game.board[0,:]):
         usr_input = input(f"""
    It's player {game.player+1} turn.
-   Type the column you wish to move or type 'sim' to see how you can win the most points.
+   Type the column you wish to move
+   Type 'b' to see a repsentation of the board.
+   Type 'sim' to see how you can win the most points.
    To see the score, type 'score'.
    To quit, type 'q'.
    Your input: """)
         if usr_input == 'q':
             break
+        elif usr_input == 'b':
+            game.printBoard()
         elif usr_input == 'sim':
             path,points = game.simulate()
             print(f"Gain {points} point(s) by moving along the following columns:")
